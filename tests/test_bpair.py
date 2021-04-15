@@ -5,7 +5,8 @@ import numpy as np
 def test_pair():
     a = np.array([1, 3], dtype=np.uint32)
     b = np.array([15, 7], dtype=np.uint32)
-    actual = bpair.pair(a, b)
+    arr = np.array([[x1, x2] for x1, x2 in zip(a, b)])
+    actual = bpair.pair(arr)
     expected = np.array([4294967311, 12884901895], dtype=np.uint64)
     assert all([x == y for x, y in zip(actual, expected)])
 

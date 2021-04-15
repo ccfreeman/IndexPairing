@@ -2,7 +2,7 @@ import numpy as np
 
 N_BITSHIFT = 32
 
-def pair(a, b):
+def pair(arr):
     """
     Parameters
     ----------
@@ -13,7 +13,7 @@ def pair(a, b):
     -------
     z : np.array of uint64
     """
-    return (a.astype(np.uint64) << N_BITSHIFT) + b.astype(np.uint64)
+    return (arr[:, 0].astype(np.uint64) << N_BITSHIFT) + arr[:, 1].astype(np.uint64)
 
 
 def unpair(z):

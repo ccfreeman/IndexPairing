@@ -7,4 +7,4 @@ def test_pair():
 
 
 def test_unpair():
-    assert _unpair(4) == (1,1)
+    assert _unpair(4) == [1,1]
