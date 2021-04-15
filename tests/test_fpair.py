@@ -9,8 +9,6 @@ def test_pair():
 def test_unpair():
     assert _unpair(4) == [1,1]
 
-import numpy as np
-
 
 def test_pair_arr():
     a = np.array([1, 3], dtype=np.uint32)
