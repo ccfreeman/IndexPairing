@@ -57,4 +57,4 @@ def unpair(z):
     -------
     arr : np.array of length two arrays
     """
-    return np.array([_unpair(idx) for idx in z], dtype='uint{0}'.format(CONFIG.UINT_SIZE_LG))
+    return np.array([_unpair(idx) for idx in z], dtype='uint{0}'.format(CONFIG.UINT_SIZE_SM))
