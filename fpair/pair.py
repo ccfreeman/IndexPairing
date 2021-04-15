@@ -24,7 +24,7 @@ def pair(a, b):
 
     Returns
     -------
-    z : 
+    z : np.array
     """
     arrsrt = np.array([[x[0], x[1]] if x[0] < x[1] else [x[1], x[0]] for x in zip(a, b)])
     return np.array([_pair(x[0], x[1]) for x in arrsrt], dtype=np.uint64)
