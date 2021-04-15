@@ -20,8 +20,7 @@ def pair(arr):
     """
     Parameters
     ----------
-    a : np.array
-    b : np.array
+    arr : np.array of length two arrays
 
     Returns
     -------
@@ -39,8 +38,7 @@ def _unpair(z):
 
     Returns
     -------
-    a : int
-    b : int
+    ab : list of length 2
     """
     w = int((np.sqrt(8 * z + 1) - 1) / 2)
     t = (w ** 2 + w) // 2 
@@ -57,7 +55,6 @@ def unpair(z):
 
     Returns
     -------
-    a : np.array
-    b : np.array
+    arr : np.array of length two arrays
     """
     return np.array([_unpair(idx) for idx in z], dtype='uint{0}'.format(CONFIG.UINT_SIZE_LG))

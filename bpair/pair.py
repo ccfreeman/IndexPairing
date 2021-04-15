@@ -5,8 +5,7 @@ def pair(arr):
     """
     Parameters
     ----------
-    a : np.array of uint32
-    b : np.array of uint32
+    arr : np.array of length two arrays
     
     Returns
     -------
@@ -24,8 +23,7 @@ def unpair(z):
     
     Returns
     -------
-    a : np.array of uint32
-    b : np.array of uint32
+    arr : np.array of length two arrays
     """
     a = (z >> CONFIG.N_BITSHIFT).astype('uint{0}'.format(CONFIG.UINT_SIZE_SM))
     b = z.astype('uint{0}'.format(CONFIG.UINT_SIZE_SM))
