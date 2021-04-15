@@ -12,8 +12,8 @@ def pair(arr):
     -------
     z : np.array of uint64
     """
-    arrsrt = np.array([[x[0], x[1]] if (x[0] < x[1]) else [x[1], x[0]] for x in arr])
-    return (arrsrt[:, 0].astype(np.uint64) << CONFIG.N_BITSHIFT) + arrsrt[:, 1].astype('uint{0}'.format(CONFIG.UINT_SIZE_LG))
+    arrsrt = np.array([[x[0], x[1]] if (x[0] < x[1]) else [x[1], x[0]] for x in arr], dtype='uint{0}'.format(CONFIG.UINT_SIZE_SM))
+    return (arrsrt[:, 0].astype('uint{0}'.format(CONFIG.UINT_SIZE_LG)) << CONFIG.N_BITSHIFT) + arrsrt[:, 1].astype('uint{0}'.format(CONFIG.UINT_SIZE_LG))
 
 
 def unpair(z):
