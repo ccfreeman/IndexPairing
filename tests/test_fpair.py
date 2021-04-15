@@ -1,8 +1,9 @@
 import fpair
+from fpair.pair import _pair
 
 
 def test_pair():
-    assert fpair.pair(1,1) == 4
+    assert _pair(1,1) == 4
 
 
 def test_unpair():
