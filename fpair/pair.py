@@ -1,4 +1,5 @@
 import numpy as np
+from config import CONFIG
 
 
 def _pair(a, b):
@@ -27,7 +28,7 @@ def pair(arr):
     z : np.array
     """
     arrsrt = np.array([[x[0], x[1]] if (x[0] < x[1]) else [x[1], x[0]] for x in arr])
-    return np.array([_pair(x[0], x[1]) for x in arrsrt], dtype=np.uint64)
+    return np.array([_pair(x[0], x[1]) for x in arrsrt], dtype='uint{0}'.format(CONFIG.UINT_SIZE_LG))
 
 
 def _unpair(z):
@@ -59,4 +60,4 @@ def unpair(z):
     a : np.array
     b : np.array
     """
-    return np.array([_unpair(idx) for idx in z], dtype=np.uint64)
+    return np.array([_unpair(idx) for idx in z], dtype='uint{0}'.format(CONFIG.UINT_SIZE_LG))

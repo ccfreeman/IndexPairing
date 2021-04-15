@@ -1,6 +1,5 @@
 import numpy as np
-
-N_BITSHIFT = 32
+from config import CONFIG
 
 def pair(arr):
     """
@@ -13,7 +12,8 @@ def pair(arr):
     -------
     z : np.array of uint64
     """
-    return (arr[:, 0].astype(np.uint64) << N_BITSHIFT) + arr[:, 1].astype(np.uint64)
+    arrsrt = np.array([[x[0], x[1]] if (x[0] < x[1]) else [x[1], x[0]] for x in arr])
+    return (arrsrt[:, 0].astype(np.uint64) << CONFIG.N_BITSHIFT) + arrsrt[:, 1].astype('uint{0}'.format(CONFIG.UINT_SIZE_LG))
 
 
 def unpair(z):
@@ -27,6 +27,6 @@ def unpair(z):
     a : np.array of uint32
     b : np.array of uint32
     """
-    a = (z >> N_BITSHIFT).astype(np.uint32)
-    b = z.astype(np.uint32)
-    return a, b
+    a = (z >> CONFIG.N_BITSHIFT).astype('uint{0}'.format(CONFIG.UINT_SIZE_SM))
+    b = z.astype('uint{0}'.format(CONFIG.UINT_SIZE_SM))
+    return np.column_stack((a, b))
