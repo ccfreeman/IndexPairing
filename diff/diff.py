@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def diff(a, b, pair_fnc, diff_pos='left'):
+def diff(a, b, pmod, diff_pos='left'):
     """Return the pair-wise elements unique to one list (default left argument 'a'). Use the
     pairing function given as argument.
     
@@ -9,7 +9,7 @@ def diff(a, b, pair_fnc, diff_pos='left'):
     ----------
     a : np.array
     b : np.array
-    pair_fnc : function
+    pmod : module with pair and unpair functions
     diff_pos : string ('left' or 'right')
         Whether we want the unique items from the left or right (a or b) to be returned.
     
@@ -18,5 +18,6 @@ def diff(a, b, pair_fnc, diff_pos='left'):
     z : np.array
     """
     if diff_pos == 'left':
-        return a[~np.in1d(pair_fnc(a), pair_fnc(b))]
-    return b[~np.in1d(pair_fnc(b), pair_fnc(a))]
+        return pmod.unpair(np.setdiff1d(pmod.pair(a), pmod.pair(b)))
+    if diff_pos == 'right':
+        return pmod.unpair(np.setdiff1d(pmod.pair(b), pmod.pair(a)))
